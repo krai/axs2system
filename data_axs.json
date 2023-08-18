@@ -1,0 +1,26 @@
+{
+    "_parent_entries": [
+        [
+            "^",
+            "core_collection"
+        ],
+        [
+            "^",
+            "byname",
+            "git"
+        ]
+    ],
+    "tags": [
+        "git_repo",
+        "collection"
+    ],
+    "contained_entries": {
+        "base_system": "base_system",
+        "gigabyte_fan_control": "gigabyte_fan_control",
+	"GIGABYTE_G292-Z43": "GIGABYTE_G292-Z43",
+	"GIGABYTE_R282-Z93": "GIGABYTE_R282-Z93"
+    },
+    "repo_name": "axs2system",
+    "submodules": false,
+    "checkout": "main"
+}
