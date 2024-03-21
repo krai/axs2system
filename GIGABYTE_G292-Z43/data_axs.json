@@ -1,0 +1,10 @@
+{
+    "_parent_entries": [
+        [ "^", "byname", "gigabyte_fan_control" ],
+        [ "^", "byname", "base_system" ]
+    ],
+
+    "tags": ["system_config"],
+    "system": "GIGABYTE_G292-Z43",
+    "fan_sensor": "SYS_FAN2"
+}

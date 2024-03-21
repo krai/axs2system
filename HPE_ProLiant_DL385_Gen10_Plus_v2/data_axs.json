@@ -1,0 +1,7 @@
+{
+    "_parent_entries": [
+        [ "^", "byname", "base_system" ]
+    ],
+    "tags": ["system_config"],
+    "system": "HPE_ProLiant_DL385_Gen10_Plus_v2"
+}
