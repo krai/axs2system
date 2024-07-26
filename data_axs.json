@@ -1,0 +1,26 @@
+{
+    "_parent_entries": [
+        [
+            "^",
+            "core_collection"
+        ],
+        [
+            "^",
+            "byname",
+            "git"
+        ]
+    ],
+    "tags": [
+        "git_repo",
+        "collection"
+    ],
+    "contained_entries": {
+        "base_system": "base_system",
+        "Dell_Precision_7920_Tower": "Dell_Precision_7920_Tower",
+        "cpu_entry_parser": "cpu_entry_parser",
+        "sut_desc_gen": "sut_desc_gen"
+    },
+    "repo_name": "axs2system-dev",
+    "submodules": false,
+    "checkout": "main"
+}

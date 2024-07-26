@@ -1,0 +1,62 @@
+{
+    "_parent_entries": [ [ "^", "byname", "entry_creator" ] ],
+
+    "lscpu_output_struct": [ "^", "execute", [[
+        [ "byquery", "shell_tool,can_lscpu" ],
+        [ "run" ],
+        0,
+        [ "func", "eval" ],
+        [ "__getitem__", "lscpu" ]
+    ]] ],
+
+    "lscpu_output_dict": [ "^^", "parse_lscpu_output" ],
+
+    "cpu_model_names_urls": {
+    "Intel_Xeon_D": "https://www.intel.com/content/www/us/en/products/sku/226239/intel-xeon-d2776nt-processor-25m-cache-up-to-3-20-ghz/specifications.html",
+    "Intel_Xeon_Gold": "https://www.intel.com/content/www/us/en/products/sku/199343/intel-xeon-gold-6240r-processor-35-75m-cache-2-40-ghz/specifications.html"
+    },
+
+
+    "cpu_min_mhz": [ "^^", "dig", "lscpu_output_dict.CPU min MHz" , {"safe": true} ],
+    "cpu_max_mhz": [ "^^", "dig", "lscpu_output_dict.CPU max MHz" , {"safe": true} ],
+    "cpu_mhz": [ "^^", "dig", "lscpu_output_dict.CPU MHz" , {"safe": true} ],
+
+    "L1d_cache": [ "^^", "dig", "lscpu_output_dict.L1d cache" ],
+    "L1i_cache": [ "^^", "dig", "lscpu_output_dict.L1i cache" ],
+    "L2_cache": [ "^^", "dig", "lscpu_output_dict.L2 cache" ],
+    "L3_cache": [ "^^", "dig", "lscpu_output_dict.L3 cache" ],
+
+    "cpu_min_mhz_rounded": [ "^^", "execute", [[
+        [ "get", "cpu_min_mhz" ],
+        0,
+        [ "func", "float" ],
+        0,
+        [ "func", "round" ]
+    ]] ],
+
+
+    "host_processor_model_name":  [ "^^", "dig", "lscpu_output_dict.Model name" ],
+    "updated_cpu_model_name": [ "^^", "update_cpu_model_name" ],
+    "host_processor_frequency": [ "^^", "get_cpu_speed_info" ],
+    
+    "host_processors_per_node": [ "^^", "dig", "lscpu_output_dict.Socket(s)" ],
+    "_host_processors_per_node": [ "^^", "execute", [[
+	    [ "get", "sockets" ],
+	    0,
+	    [ "func" , "int" ]
+    ]] ],
+
+    "host_processor_core_count": [ "^^", "dig", "lscpu_output_dict.Core(s) per socket" ],
+    "_host_processor_core_count": [ "^^", "execute", [[
+	    [ "get", "cores" ],
+	    0,
+	    [ "func", "int" ]
+    ]] ],
+
+    "host_processor_caches": [ "^^", "join_cpu_hierarchy_info" ],
+    "host_processor_url": [ "^^", "find_url_for_cpu_model"],
+
+    "newborn_entry_tags": [ "cpu_entry" ],
+    "newborn_entry_param_names": [ "host_processor_model_name" , "host_processor_frequency", "host_processors_per_node", "host_processor_core_count", "host_processor_caches", "host_processor_url" ],
+    "newborn_entry_name": [ "^^", "get", "updated_cpu_model_name" ]
+}

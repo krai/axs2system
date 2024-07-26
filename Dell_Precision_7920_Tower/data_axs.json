@@ -1,0 +1,7 @@
+{
+    "_parent_entries": [
+        [ "^", "byname", "base_system" ]
+    ],
+    "tags": ["system_config"],
+    "system": "Dell_Precision_7920_Tower"
+}
