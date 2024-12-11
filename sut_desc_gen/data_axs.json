@@ -1,0 +1,35 @@
+{
+    "__producer_rules": [
+        [ [ "sut_description" ] , [["get", "stored_newborn_entry"]] ]
+    ],
+
+    "_parent_entries": [ [ "^", "byname", "entry_creator" ] , ["^", "byname", "base_sut"] ],
+
+    "card_type": "Pcie",
+
+    "cpu_entry": [ "^^", "execute", [[
+	    [ "get_kernel" ],
+	    [ "byname", "cpu_entry_parser" ],
+	    [ "get", "newborn_entry" ] 
+    ]] ],
+
+    "qaic_util_path": "/opt/qti-aic/tools",
+
+    "device_tool_query_list": [ "^^", "case",   [ ["^^", "if_qaic_util_path_exists"],
+        true, [
+            [ "get_kernel" ],
+            [ "byname", "qaic_util_parser" ],
+            [ "get", "newborn_entry" ]
+	],
+	false, [ [ "noop", false ] ] ]
+    ],
+    "device_tool_query":[ "^^", "execute", [
+        [ "^^", "get", "device_tool_query_list" ]
+    ] ],
+
+    "description_dictionary": [ "^^", "update_sut_desc" ],
+
+    "newborn_entry_tags": [ "sut_description" ],
+    "newborn_entry_param_names": [ "sut_name" , "description_dictionary" ],
+    "newborn_name_template": "#{sut_name}#_description"
+}
